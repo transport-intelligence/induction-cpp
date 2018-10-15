@@ -1,17 +1,19 @@
 //
 #include <iostream>
 #include <sstream>
+//
+#include "Utility.hpp"
 
 int main(int argc, char* argv[]) {
-	std::ostringstream oStr;
-        oStr << "Hello ";
+	//std::ostringstream oStr;
+        std::string lName;
 	if (argc > 1) {
-	    oStr << argv[1];
+	    lName= argv[1];
         } else {
-	  oStr << "World";
+	  lName = "World";
 	}
-        oStr << "!" << std::endl;
-	std::cout << oStr.str() << std::endl;
+	const std::string& lAnnounce = Utility::display_hello (lName);
+	std::cout << lAnnounce << std::endl;
 	return 0;
 }
 
