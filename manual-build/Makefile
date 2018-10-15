@@ -1,9 +1,9 @@
 CC=g++
 
 hello: hello.o Utility.o
-	$(CC) -o $@ hello.o Utility.o 
+	$(CC) -o $@ $^ 
 
-.cpp.o:
+%.o: %.cpp
 	$(CC) -c $< -o $@
 
 check: hello
