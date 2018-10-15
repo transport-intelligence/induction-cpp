@@ -5,7 +5,7 @@
 int main(int argc, char* argv[]) {
 	std::ostringstream oStr;
         oStr << "Hello ";
-	if (argc >= 1) {
+	if (argc > 1) {
 	    oStr << argv[1];
         } else {
 	  oStr << "World";
