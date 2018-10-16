@@ -1,11 +1,13 @@
 CC=g++
-LIB_OBJS=Utility.o
+LIB_OBJS=src/lib/Utility.o
 
-hello: hello.o libhello.so.0
-	$(CC) -o $@ $^ 
+hello: src/bin/hello.o libhello.so.0
+	@$(CC) -Iinclude -o $@ $^ && \
+		echo "You may have to set the LD_LIBRARY_PATH variable:" && \
+		echo "export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH"
 
 %.o: %.cpp
-	$(CC) -fPIC -c $< -o $@
+	$(CC) -fPIC -Iinclude -c $< -o $@
 
 libhello.so.0: ${LIB_OBJS}
 	$(CC) -g -fPIC -shared -Wl,-soname,$@ -o libhello.so.0.0.1  $^
